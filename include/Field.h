@@ -8,7 +8,7 @@ class Field: public Fields
 {
 public:
 	Field(std::string);
-	//void addValidator(Validators);
+	void addValidator(Validators);
 	// operator <<
 	//operator>>
 private:
@@ -21,6 +21,11 @@ private:
 template<class T>
 inline Field<T>::Field(std::string question)
 	:m_question(question)
+{
+}
+
+template<class T>
+inline void Field<T>::addValidator(Validators)
 {
 }
 
