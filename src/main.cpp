@@ -18,17 +18,17 @@
 // A class that represents a range validator.
 // It validates if a field value is in some range.
 // The type used as template parameter must implement < and > operators.
-//#include "RangeValidator.h"
+#include "RangeValidator.h"
 
 // A class that represents a no-digit-characters validator.
 // It validates that the field value contains no digits.
 // Works only on std::string.
-//#include "NoDigitValidator.h"
+#include "NoDigitValidator.h"
 
 // A class that represents an ID validator.
 // ID validation is done using the control digit.
 // Works only on the type 'uint32_t'.
-//#include "IdValidator.h"
+#include "IdValidator.h"
 
 // A class that represents a value and his name.
 // The class must override the << and >> operators.
@@ -92,29 +92,32 @@ int main()
 	auto wifiBundleNames = ValuesToNames<WifiBundle>();
 	auto wifiBundleField = std::make_unique<Field<ValuesToNames<WifiBundle>>>("What is your desired WIFI bundle?\n" + wifiBundleNames.valuesAndNames());
 
-	//// Creating the field validators
-	//auto nameValidator = std::make_unique<NoDigitValidator>();
-	//auto idValidator = std::make_unique<IdValidator>();
-	//auto ageValidator = std::make_unique<RangeValidator<int>>(currentYear() - MAX_AGE, currentYear() - MIN_AGE);
-	//auto destinationValidator = std::make_unique<RangeValidator<ValuesToNames<DestinationNames>>>(1, 5);
-	//auto classValidator = std::make_unique<RangeValidator<ValuesToNames<FlightTimes>>>(1,3);
-	//auto wifiBundleValidator = std::make_unique<RangeValidator<ValuesToNames<WifiBundle>>>(1,3);
+	// Creating the field validators
+	auto nameValidator = std::make_unique<NoDigitValidator>();
+	auto idValidator = std::make_unique<IdValidator>();
+	auto ageValidator = std::make_unique<RangeValidator<int>>(currentYear() - MAX_AGE, currentYear() - MIN_AGE);
+	auto destinationValidator = std::make_unique<RangeValidator<ValuesToNames<DestinationNames>>>(1, 5);
+	auto classValidator = std::make_unique<RangeValidator<ValuesToNames<FlightTimes>>>(1,3);
+	auto wifiBundleValidator = std::make_unique<RangeValidator<ValuesToNames<WifiBundle>>>(1,3);
 
-	//// Adding the validators to the fields
-	//nameField->addValidator(nameValidator.get());
-	//idField->addValidator(idValidator.get());
-	//yearOfBirthField->addValidator(ageValidator.get());
-	//destinationField->addValidator(destinationValidator.get());
-	//flightTimeField->addValidator(classValidator.get());
-	//wifiBundleField->addValidator(wifiBundleValidator.get());
+	// Adding the validators to the fields
+	nameField->addValidator(nameValidator.get());
+	idField->addValidator(idValidator.get());
+	yearOfBirthField->addValidator(ageValidator.get());
+	destinationField->addValidator(destinationValidator.get());
+	flightTimeField->addValidator(classValidator.get());
+	wifiBundleField->addValidator(wifiBundleValidator.get());
 
 	//// Creating form validators
 	//auto destinationToClassValidator
-	//	= std::make_unique<DestinationToFlightTimeValidator<Field<ValuesToNames<DestinationNames>>, Field<ValuesToNames<FlightTimes>>>>(destinationField.get(), flightTimeField.get());
-	//auto destinationToWifiBundleValidator
-	//	= std::make_unique<DestinationToWifiBundleValidator<Field<ValuesToNames<DestinationNames>>, Field<ValuesToNames<WifiBundle>>>>(destinationField.get(), wifiBundleField.get());
+	//	= std::make_unique<DestinationToFlightTimeValidator<Field<ValuesToNames<DestinationNames>>,
+	//	Field<ValuesToNames<FlightTimes>>>>(destinationField.get(), flightTimeField.get());
 
-	// Creating the form and adding the fields to it
+	//auto destinationToWifiBundleValidator
+	//	= std::make_unique<DestinationToWifiBundleValidator<Field<ValuesToNames<DestinationNames>>,
+	//	Field<ValuesToNames<WifiBundle>>>>(destinationField.get(), wifiBundleField.get());
+
+	////Creating the form and adding the fields to it
 	//Form myForm;
 	//myForm.addField(nameField.get());
 	//myForm.addField(idField.get());

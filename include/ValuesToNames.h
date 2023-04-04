@@ -16,10 +16,11 @@ private:
 template<class T>
 inline std::string ValuesToNames<T>::valuesAndNames()
 {
-	std::string string_msg = "";
+	std::string string_msg = "(";
 	for (int index = 0; index < m_options.getSize(); index++)
 	{
-		string_msg += "( " + std::to_string(index + 1) + " -" + m_options.getVal(index) + " )";
+		string_msg +=  std::to_string(index + 1) + " -" + m_options.getVal(index) ;
 	}
+	string_msg += " )";
 	return string_msg;
 }
