@@ -1,5 +1,7 @@
 #pragma once
 #include "Validators.h"
+
+
 template <class T>
 class RangeValidator : public Validators
 {

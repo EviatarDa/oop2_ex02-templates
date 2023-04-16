@@ -1,5 +1,6 @@
 #pragma once
-class IdValidator
+
+class IdValidator: public Validators
 {
 public:
 

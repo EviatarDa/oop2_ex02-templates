@@ -4,20 +4,20 @@
 #include <string>
 # include <iostream>
 #include "Field.h"
-//#include "Validators.h"
+#include "FormValidator.h"
 
 class Form
 {
 public:
-	//void addField()
-	//addValidator
+	void addField(BaseField*);
+	void addValidator(FormValidator*);
 	//validateForm()
-	//fillForm()
+	void fillForm();
 	//operator <<
 
 private:
-	std::vector<Fields*> m_fields;
-	//std::vector<ValidatorsForm*> m_validators;
+	std::vector<BaseField*> m_fields;
+	std::vector<FormValidator*> m_validators;
 
 };
 

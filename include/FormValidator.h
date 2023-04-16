@@ -1,6 +1,6 @@
 #pragma once
 
-class Fields
+class FormValidator
 {
 public:
 
@@ -8,3 +8,4 @@ public:
 private:
 
 };
+

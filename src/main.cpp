@@ -48,12 +48,12 @@
 // A class that represents a destination-vs.-class validator.
 // It checks if the destination and class supplied matches each other.
 // The types used as template parameter must be Field.
-//#include "DestinationToFlightTimeValidator.h"
+#include "DestinationToFlightTimeValidator.h"
 
 // A class that represents a destination-vs.-WIFI-bundle validator.
 // It checks if the destination and WIFI-bundle supplied matches each other.
 // The types used as template parameter must be Field.
-//#include "DestinationToWifiBundleValidator.h"
+#include "DestinationToWifiBundleValidator.h"
 
 //------------------- Function declarations ----------------------------
 
@@ -108,34 +108,34 @@ int main()
 	flightTimeField->addValidator(classValidator.get());
 	wifiBundleField->addValidator(wifiBundleValidator.get());
 
-	//// Creating form validators
-	//auto destinationToClassValidator
-	//	= std::make_unique<DestinationToFlightTimeValidator<Field<ValuesToNames<DestinationNames>>,
-	//	Field<ValuesToNames<FlightTimes>>>>(destinationField.get(), flightTimeField.get());
+	// Creating form validators
+	auto destinationToClassValidator
+		= std::make_unique<DestinationToFlightTimeValidator<Field<ValuesToNames<DestinationNames>>,
+		Field<ValuesToNames<FlightTimes>>>>(destinationField.get(), flightTimeField.get());
 
-	//auto destinationToWifiBundleValidator
-	//	= std::make_unique<DestinationToWifiBundleValidator<Field<ValuesToNames<DestinationNames>>,
-	//	Field<ValuesToNames<WifiBundle>>>>(destinationField.get(), wifiBundleField.get());
+	auto destinationToWifiBundleValidator
+		= std::make_unique<DestinationToWifiBundleValidator<Field<ValuesToNames<DestinationNames>>,
+		Field<ValuesToNames<WifiBundle>>>>(destinationField.get(), wifiBundleField.get());
 
-	////Creating the form and adding the fields to it
-	//Form myForm;
-	//myForm.addField(nameField.get());
-	//myForm.addField(idField.get());
-	//myForm.addField(yearOfBirthField.get());
-	//myForm.addField(destinationField.get());
-	//myForm.addField(flightTimeField.get());
-	//myForm.addField(wifiBundleField.get());
+	//Creating the form and adding the fields to it
+	Form myForm;
+	myForm.addField(nameField.get());
+	myForm.addField(idField.get());
+	myForm.addField(yearOfBirthField.get());
+	myForm.addField(destinationField.get());
+	myForm.addField(flightTimeField.get());
+	myForm.addField(wifiBundleField.get());
 
-	//// Adding form validators
-	//myForm.addValidator(destinationToClassValidator.get());
-	//myForm.addValidator(destinationToWifiBundleValidator.get());
+	// Adding form validators
+	myForm.addValidator(destinationToClassValidator.get());
+	myForm.addValidator(destinationToWifiBundleValidator.get());
 
-	//// Getting the information from the user
-	//clearScreen();
-	//std::cout << getWelcomeMessage();
+	// Getting the information from the user
+	clearScreen();
+	std::cout << getWelcomeMessage();
 
-	//// Get the input only for empty or not valid fields
-	//myForm.fillForm();
+	// Get the input only for empty or not valid fields
+	myForm.fillForm();
 
 	//// Validation loop
 	//for (auto formIsCorrect = myForm.validateForm(); !formIsCorrect; formIsCorrect = myForm.validateForm())
