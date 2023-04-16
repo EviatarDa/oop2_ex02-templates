@@ -10,7 +10,7 @@ public:
 
 private:
 	T m_options;
-	int m_chosenOption; //the option that the user choose
+	int m_chosenOption=0; //the option that the user choose
 };
 
 template<class T>

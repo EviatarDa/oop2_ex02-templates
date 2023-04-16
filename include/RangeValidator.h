@@ -3,10 +3,11 @@
 
 
 template <class T>
-class RangeValidator : public Validators
+class RangeValidator : public Validators <T>
 {
 public:
 	RangeValidator(int, int);
+	bool checkValidation(const T& ) override;
 
 private:
 	int m_max, m_min;
@@ -16,4 +17,11 @@ template<class T>
 inline RangeValidator<T>::RangeValidator(int max, int min)
 	:m_max(max),m_min(min)
 {
+}
+
+
+template<typename T>
+bool RangeValidator<T>::checkValidation(const T& value)
+{
+	return (value >= m_min && value <= m_max);
 }

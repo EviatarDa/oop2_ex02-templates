@@ -4,7 +4,7 @@
 
 void Form::addField(BaseField* field)
 {
-	m_fields.push_back(field);
+	m_basefields.push_back(field);
 }
 
 void Form::addValidator(FormValidator* validator)
@@ -14,8 +14,8 @@ void Form::addValidator(FormValidator* validator)
 
 void Form::fillForm()
 {
-	for (auto field = 0; field < m_fields.size(); field++)
+	for (auto field = 0; field < m_basefields.size(); field++)
 	{
-		m_fields[field]->readData();
+		m_basefields[field]->readData();
 	}
 }

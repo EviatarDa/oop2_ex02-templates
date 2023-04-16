@@ -13,11 +13,12 @@ public:
 	void addValidator(FormValidator*);
 	//validateForm()
 	void fillForm();
-	//operator <<
+	
 
 private:
-	std::vector<BaseField*> m_fields;
+	std::vector<BaseField*> m_basefields;
 	std::vector<FormValidator*> m_validators;
 
 };
 
+//std::ostream& operator << (std::ostream& os, const Form& form);

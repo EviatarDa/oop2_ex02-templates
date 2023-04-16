@@ -6,6 +6,7 @@ class DestinationToFlightTimeValidator : public FormValidator
 {
 public:
 	DestinationToFlightTimeValidator(T1*, T2*);
+	bool checkValidation(T1*, T2*) ;
 
 
 private:
