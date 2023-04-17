@@ -11,7 +11,7 @@ class Form
 public:
 	void addField(BaseField*);
 	void addValidator(FormValidator*);
-	//validateForm()
+	bool validateForm() { return true; } // TODO 
 	void fillForm();
 	
 
@@ -21,4 +21,4 @@ private:
 
 };
 
-//std::ostream& operator << (std::ostream& os, const Form& form);
+std::ostream& operator << (std::ostream& os, const Form& form);

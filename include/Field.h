@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 #include "BaseField.h"
 #include "Validators.h"
 
@@ -8,9 +9,11 @@ class Field: public BaseField
 {
 public:
 	Field(std::string);
+	~Field() = default;
 	void addValidator(Validators<T>*);
-	void readData() override;
-	bool fieldIsValid() const override;
+	virtual void readData() override;
+	virtual bool fieldIsValid() override;
+	virtual void getData() const {};
 	// operator <<
 	//operator>>
 private:
@@ -35,17 +38,28 @@ inline void Field<T>::addValidator(Validators<T>* p)
 template<class T>
 inline void Field<T>::readData()
 {
-	cout << m_question;
-	cin >> m_info;
-	if (fieldIsValid)
-		cout << m_info;
+	std::cout << m_question;
+	std::cin >> m_info;
+	if (fieldIsValid())
+		std::cout << m_info;
 	else
-		;//////TOOD
-
+		std::cin >> m_info;
 }
 
+//template<class T>
+//inline void Field<T>::readData()
+//{
+//	std::cout << m_question;
+//	std::cin >> m_info;
+//	if (fieldIsValid())
+//		std::cout << m_info;
+//	else
+//		std::cin >> m_info;
+//
+//}
+
 template<class T>
-inline bool Field<T>::fieldIsValid() const
+inline bool Field<T>::fieldIsValid() 
 {
 	return m_validator->checkValidation(m_info);
 }

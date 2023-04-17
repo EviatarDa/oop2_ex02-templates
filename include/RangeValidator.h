@@ -23,5 +23,5 @@ inline RangeValidator<T>::RangeValidator(int max, int min)
 template<typename T>
 bool RangeValidator<T>::checkValidation(const T& value)
 {
-	return (value >= m_min && value <= m_max);
+	return false; //(value >= m_min && value <= m_max);
 }

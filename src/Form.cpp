@@ -14,8 +14,17 @@ void Form::addValidator(FormValidator* validator)
 
 void Form::fillForm()
 {
-	for (auto field = 0; field < m_basefields.size(); field++)
-	{
-		m_basefields[field]->readData();
-	}
+	//for (auto field = 0; field < m_basefields.size(); field++)
+	//{
+	//	m_basefields[field]->readData();
+	//}
+
+	for (auto f : m_basefields)
+		//if(!f->fieldIsValid())
+		f->readData();
+}
+
+std::ostream& operator<<(std::ostream& os, const Form& form)
+{
+	return os;
 }
