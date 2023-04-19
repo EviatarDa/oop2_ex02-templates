@@ -5,6 +5,7 @@ class IdValidator: public Validators<uint32_t>
 public:
 	IdValidator();
 	bool checkValidation(const uint32_t& id) override; 
+    int uintLen(uint32_t) const;
 
 
 private:
@@ -16,47 +17,40 @@ inline IdValidator::IdValidator()
 {
 }
 
+int IdValidator::uintLen(uint32_t num) const 
+{
+    uint32_t tmp = num;
+    int len = 0;
+
+    while (tmp != 0) {
+        tmp = tmp / 10;
+        ++len;
+    }
+    return len;
+}
+
 bool IdValidator::checkValidation(const uint32_t& number)
 {
-	uint32_t id = number; //to keep the id coonst
+    int sum = 0, incNum;
+    uint32_t numArr[9] = { 0 };
+    uint32_t tmp = number;
 
-	int sum = 0, length = 0;
+    // check the length of the number
+    if (uintLen(number) != 9) {
+        return false;
+    }
 
-	while (id / 10 != 0)
-	{
-		id=id / 10;
-		length++;
-	}
-	if (length != 9)
-		return false;
+    // convert the number to an array for easy check later
+    for (int i = 8; i >= 0; i--) {
+        numArr[i] = tmp % 10;
+        tmp = tmp / 10;
+    }
 
-	for (int i = 0; i <= length; i++)
-	{
-		int num,			// The single num in the ID that will be check
-			binary, 		// The numbers 1 or 2 that will be mult with num
-			mult,			// Result of multiplication of num with 1 or 2
-			sum_of_mult;
+    // validate the id number
+    for (int i = 0; i < 9; i++) {
+        incNum = numArr[i] * ((i % 2) + 1);
+        sum += (incNum > 9) ? incNum - 9 : incNum;
+    }
 
-		num = id % 10;			// Take the last number in the ID
-		id = id / 10;			// Updates the ID without the last number
-
-		if (i % 2 == 0)
-			binary = 1;
-		else
-			binary = 2;
-
-		mult = num * binary;
-
-		if (mult > 9)
-			sum_of_mult = (mult / 10) + (mult % 10);
-		else
-			sum_of_mult = mult;
-
-		sum += sum_of_mult;
-	}
-
-	if (sum % 10 == 0)
-		return true;
-
-	return false;
+    return (sum % 10 == 0);
 }

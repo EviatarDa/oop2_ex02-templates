@@ -11,6 +11,9 @@ public:
 	//opertor>> get a number
 	std::string GetOption();
 	void SetOption(int);
+	const int getValue() const;
+	bool inRange(); 
+
 	
 
 private:
@@ -43,13 +46,29 @@ inline void ValuesToNames<T>::SetOption(int value)
 	m_value = value;
 }
 
+template<class T>
+inline const int ValuesToNames<T>::getValue() const
+{
+	return m_value;
+}
+
+template<class T>
+inline bool ValuesToNames<T>::inRange() 
+{
+	return m_value <= m_name.Max() && m_value >= m_name.Min();
+}
+
 
 template <class T >
 std::ostream& operator << (std::ostream& os,  ValuesToNames<T> & val2name)
 {
-	os << val2name.GetOption();
+	if (val2name.inRange())
+		os << val2name.GetOption();
+	else
+		os << val2name.getValue();
 	return os;
 }
+
 
 template <class T >
 std::istream& operator >> (std::istream& is,  ValuesToNames<T>& val2name)

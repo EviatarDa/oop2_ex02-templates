@@ -62,7 +62,6 @@ inline void Field<T>::printField(std::ostream& os)
 		os << "\t\t" << m_validator->getErrorMsg();
 	}
 	os << "\n-------------------------------------------------------------------------\n";
-
 }
 
 template<class T>

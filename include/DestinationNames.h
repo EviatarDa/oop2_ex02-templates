@@ -7,6 +7,8 @@ class DestinationNames
 public:
 	int getSize() { return DESTINATIONS; }
 	std::string getVal(int index) { return m_destinations[index]; }
+	int Min() { return 1; };
+	int Max() { return DESTINATIONS; };
 	
 
 private:

@@ -6,7 +6,7 @@ class DestinationToWifiBundleValidator : public FormValidator
 {
 public:
 	DestinationToWifiBundleValidator(T1*, T2*);
-	bool checkValidation();
+	bool checkValidation() override;
 
 private:
 	T1* m_destination;

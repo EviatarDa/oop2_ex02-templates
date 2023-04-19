@@ -14,15 +14,18 @@ void Form::addValidator(FormValidator* validator)
 
 bool Form::validateForm()
 {
+	bool flag = true;
 	for (int field = 0; field < m_basefields.size(); field++)
 	{
 		if (!m_basefields[field]->fieldIsValid())
 		{
-			return false;
+			 flag = false;
 		}
 	}
-	//TODO 2 validators
-	return true;
+	bool one = m_validators[0]->checkValidation();
+	bool two = m_validators[1]->checkValidation();
+
+	return flag;
 }
 
 void Form::fillForm()
@@ -48,12 +51,5 @@ std::ostream& operator<<(std::ostream& os,  Form& form)
 	{
 		form.getField(field)->printField(os);
 	}
-
-	//for (int validator = 0; validator < form.getValidatorsNum(); validator++)
-	//{
-	//	form.getValidator(validator)->formError(os);
-	//}
-	
-
 	return os;
 }

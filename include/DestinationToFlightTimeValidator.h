@@ -6,7 +6,7 @@ class DestinationToFlightTimeValidator : public FormValidator
 {
 public:
 	DestinationToFlightTimeValidator(T1*, T2*);
-	bool checkValidation() ;
+	bool checkValidation() override;
 
 
 private:
