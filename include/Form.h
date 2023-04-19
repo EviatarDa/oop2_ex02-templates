@@ -11,9 +11,10 @@ class Form
 public:
 	void addField(BaseField*);
 	void addValidator(FormValidator*);
-	bool validateForm() { return true; } // TODO 
-	void fillForm();
-	
+	bool validateForm();
+	void fillForm();	
+	int getFieldsNum() const;
+	BaseField* getField(int) const;
 
 private:
 	std::vector<BaseField*> m_basefields;
@@ -21,4 +22,4 @@ private:
 
 };
 
-std::ostream& operator << (std::ostream& os, const Form& form);
+std::ostream& operator << (std::ostream& os,  Form& form);

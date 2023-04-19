@@ -12,19 +12,48 @@ void Form::addValidator(FormValidator* validator)
 	m_validators.push_back(validator);
 }
 
-void Form::fillForm()
+bool Form::validateForm()
 {
-	//for (auto field = 0; field < m_basefields.size(); field++)
-	//{
-	//	m_basefields[field]->readData();
-	//}
-
-	for (auto f : m_basefields)
-		//if(!f->fieldIsValid())
-		f->readData();
+	for (int field = 0; field < m_basefields.size(); field++)
+	{
+		if (!m_basefields[field]->fieldIsValid())
+		{
+			return false;
+		}
+	}
+	//TODO 2 validators
+	return true;
 }
 
-std::ostream& operator<<(std::ostream& os, const Form& form)
+void Form::fillForm()
 {
+	for (auto field: m_basefields)
+		if(!field->getValid())
+			field->readData();
+}
+
+int Form::getFieldsNum() const
+{
+	return m_basefields.size();
+}
+
+ BaseField* Form::getField(int field) const
+{
+	return m_basefields[field];
+}
+
+std::ostream& operator<<(std::ostream& os,  Form& form)
+{
+	for (auto field = 0; field < form.getFieldsNum(); field++ )
+	{
+		form.getField(field)->printField(os);
+	}
+
+	//for (int validator = 0; validator < form.getValidatorsNum(); validator++)
+	//{
+	//	form.getValidator(validator)->formError(os);
+	//}
+	
+
 	return os;
 }

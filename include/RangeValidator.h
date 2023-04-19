@@ -15,7 +15,7 @@ private:
 
 template<class T>
 inline RangeValidator<T>::RangeValidator(int max, int min)
-	:m_max(max),m_min(min)
+	:Validators<T>("Out of range"), m_max(max), m_min(min)
 {
 }
 

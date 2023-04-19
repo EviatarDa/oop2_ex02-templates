@@ -11,15 +11,16 @@ public:
 	Field(std::string);
 	~Field() = default;
 	void addValidator(Validators<T>*);
-	virtual void readData() override;
-	virtual bool fieldIsValid() override;
-	virtual void getData() const {};
-	// operator <<
-	//operator>>
+	void readData() override;
+	bool fieldIsValid() override;
+	void printField(std::ostream&) override;
+	bool getValid() const override;
+
 private:
 	std::string  m_question;
 	T m_info;
 	Validators<T>* m_validator;
+	bool m_valid = false;
 
 };
 
@@ -40,26 +41,32 @@ inline void Field<T>::readData()
 {
 	std::cout << m_question;
 	std::cin >> m_info;
-	if (fieldIsValid())
-		std::cout << m_info;
-	else
-		std::cin >> m_info;
+	std::cout << m_info << std::endl;
 }
 
-//template<class T>
-//inline void Field<T>::readData()
-//{
-//	std::cout << m_question;
-//	std::cin >> m_info;
-//	if (fieldIsValid())
-//		std::cout << m_info;
-//	else
-//		std::cin >> m_info;
-//
-//}
 
 template<class T>
 inline bool Field<T>::fieldIsValid() 
 {
-	return m_validator->checkValidation(m_info);
+	m_valid = m_validator->checkValidation(m_info);
+	return m_valid;
+}
+
+template<class T>
+inline void Field<T>::printField(std::ostream& os) 
+{
+	os << "-------------------------------------------------------------------------\n";
+	os << m_question << " = " << m_info;
+	if (!m_valid)
+	{
+		os << "\t\t" << m_validator->getErrorMsg();
+	}
+	os << "\n-------------------------------------------------------------------------\n";
+
+}
+
+template<class T>
+inline bool Field<T>::getValid() const
+{
+	return m_valid;
 }

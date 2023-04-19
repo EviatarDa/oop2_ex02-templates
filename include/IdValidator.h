@@ -3,12 +3,18 @@
 class IdValidator: public Validators<uint32_t>
 {
 public:
+	IdValidator();
 	bool checkValidation(const uint32_t& id) override; 
 
 
 private:
 
 };
+
+inline IdValidator::IdValidator()
+	:Validators("Wrong control digit")
+{
+}
 
 bool IdValidator::checkValidation(const uint32_t& number)
 {
