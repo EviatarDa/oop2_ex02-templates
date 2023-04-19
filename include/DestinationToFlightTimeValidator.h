@@ -23,5 +23,7 @@ inline DestinationToFlightTimeValidator<T1, T2>::DestinationToFlightTimeValidato
 template<class T1, class T2>
 inline bool DestinationToFlightTimeValidator<T1, T2>::checkValidation()
 {
-	return false;
+	int time = m_time->getInfo().getValue();
+	int destination = m_destination->getInfo().getValue();
+	return true;
 }

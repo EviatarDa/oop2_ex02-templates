@@ -22,5 +22,8 @@ inline DestinationToWifiBundleValidator<T1, T2>::DestinationToWifiBundleValidato
 template<class T1, class T2>
 inline bool DestinationToWifiBundleValidator<T1, T2>::checkValidation()
 {
+
+
+	
 	return false;
 }

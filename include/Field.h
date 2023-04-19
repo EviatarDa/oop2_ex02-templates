@@ -15,6 +15,8 @@ public:
 	bool fieldIsValid() override;
 	void printField(std::ostream&) override;
 	bool getValid() const override;
+	const T getInfo();
+	
 
 private:
 	std::string  m_question;
@@ -69,3 +71,10 @@ inline bool Field<T>::getValid() const
 {
 	return m_valid;
 }
+
+template<class T>
+inline const T Field<T>::getInfo()
+{
+	return m_info;
+}
+
