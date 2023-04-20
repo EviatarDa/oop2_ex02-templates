@@ -38,16 +38,16 @@ inline bool DestinationToFlightTimeValidator<T1, T2>::checkValidation()
 	}
 	case AFTER_NOON_EVENING:
 	{
-		if (destination == ROME || destination == PRAGUE)
-		{
-			return false;
-		}
+		return true;
 		break;
 	}
 
 	case NIGHT:
 	{
-		return true;
+		if (destination == ROME || destination == PRAGUE)
+		{
+			return false;
+		}
 		break;
 	}
 	default:
