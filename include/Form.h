@@ -24,8 +24,8 @@ public:
 private:
 	std::vector<BaseField*> m_basefields;
 	std::vector<FormValidator*> m_validators;
-	bool m_time_destination_valid= false;
-	bool m_wifi_destination_valid= false;
+	bool m_time_destination_valid= true;
+	bool m_wifi_destination_valid= true;
 
 };
 
