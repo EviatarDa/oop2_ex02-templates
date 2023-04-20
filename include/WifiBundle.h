@@ -3,10 +3,10 @@ const int WIFI = 3;
 class WifiBundle
 {
 public:
-	int getSize() { return WIFI; }
-	std::string getVal(int index) { return m_wifibundle[index]; }
-	int Min() { return 1; };
-	int Max() { return WIFI; };
+	const int getSize() const { return WIFI; }
+	const std::string getVal(int index) const { return m_wifibundle[index]; }
+	const int Min() const { return 1; };
+	const int Max() const { return WIFI; };
 
 private:
 	std::string m_wifibundle[WIFI] = { "None ", "Basic " ,"Extended" };

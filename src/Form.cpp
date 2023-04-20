@@ -12,8 +12,9 @@ void Form::addValidator(FormValidator* validator)
 	m_validators.push_back(validator);
 }
 
-bool Form::validateForm()
+const bool Form::validateForm()
 {
+	// flag that indicate if all form is valid
 	bool valid = true;
 	for (int field = 0; field < m_basefields.size(); field++)
 	{
@@ -22,6 +23,7 @@ bool Form::validateForm()
 			 valid = false;
 		}
 	}
+	//only if fields valid check the combinations
 	if (valid)
 	{
 		m_time_destination_valid = m_validators[0]->checkValidation();	
@@ -49,12 +51,12 @@ void Form::fillForm()
 			field->readData();
 }
 
-int Form::getFieldsNum() const
+const int Form::getFieldsNum() const
 {
 	return m_basefields.size();
 }
 
- BaseField* Form::getField(int field) const
+BaseField* Form::getField(int field) const
 {
 	return m_basefields[field];
 }

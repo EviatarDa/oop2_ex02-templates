@@ -4,9 +4,8 @@ class IdValidator: public Validators<uint32_t>
 {
 public:
 	IdValidator();
-	bool checkValidation(const uint32_t& id) override; 
-    int uintLen(uint32_t) const;
-
+	bool checkValidation(const uint32_t& id)  override; 
+    const int uintLen(uint32_t) const;
 
 private:
 
@@ -17,7 +16,7 @@ inline IdValidator::IdValidator()
 {
 }
 
-int IdValidator::uintLen(uint32_t num) const 
+const int IdValidator::uintLen(uint32_t num) const 
 {
     uint32_t tmp = num;
     int len = 0;

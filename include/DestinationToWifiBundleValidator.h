@@ -6,7 +6,7 @@ class DestinationToWifiBundleValidator : public FormValidator
 {
 public:
 	DestinationToWifiBundleValidator(T1*, T2*);
-	bool checkValidation() override;
+	const bool checkValidation() override;
 
 private:
 	T1* m_destination;
@@ -20,14 +20,13 @@ inline DestinationToWifiBundleValidator<T1, T2>::DestinationToWifiBundleValidato
 }
 
 template<class T1, class T2>
-inline bool DestinationToWifiBundleValidator<T1, T2>::checkValidation()
+inline const bool DestinationToWifiBundleValidator<T1, T2>::checkValidation()
 {
-	//(1 - Morning/Noon, 2 - After-Noon/Evening, 3 - Night)
-	//(1 - Rome, 2 - Prague, 3 - New York, 4 - India, 5 - Thailand)
+	//get the integer value from T
 	int wifi = m_wifi->getInfo().getValue();
 	int destination = m_destination->getInfo().getValue();
-	//if newyork - 3 
-	//if india or thiland- 1 or 2 
+
+	//validate the wifi-location 
 	switch (wifi)
 	{
 	case NONE:

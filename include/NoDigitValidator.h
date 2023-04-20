@@ -8,7 +8,7 @@ public:
 	bool checkValidation(const std::string& name);
 
 private:
-	//std::string error();
+
 };
 
 

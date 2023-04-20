@@ -13,9 +13,9 @@ class Form
 public:
 	void addField(BaseField*);
 	void addValidator(FormValidator*);
-	bool validateForm();
+	const bool validateForm();
 	void fillForm();	
-	int getFieldsNum() const;
+	const int getFieldsNum() const;
 	BaseField* getField(int) const;
 	const bool getTimeDest() const;
 	const bool getWifiDest() const;

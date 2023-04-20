@@ -6,13 +6,11 @@ template <class T >
 class ValuesToNames 
 {
 public:
-	std::string valuesAndNames(); // prints the message of the num and the value 
-	//opertor << print the value in this number
-	//opertor>> get a number
-	std::string GetOption();
+	const std::string valuesAndNames() ; // prints the message of the num and the value 
+	const std::string GetOption();
 	void SetOption(int);
 	const int getValue() const;
-	bool inRange(); 
+	const bool inRange(); 
 
 	
 
@@ -23,7 +21,7 @@ private:
 
 
 template<class T>
-inline std::string ValuesToNames<T>::valuesAndNames()
+inline const std::string ValuesToNames<T>::valuesAndNames() 
 {
 	std::string string_msg = "(";
 	for (int index = 0; index < m_name.getSize(); index++)
@@ -35,7 +33,7 @@ inline std::string ValuesToNames<T>::valuesAndNames()
 }
 
 template<class T>
-inline std::string ValuesToNames<T>::GetOption() 
+inline const std::string ValuesToNames<T>::GetOption()
 {
 	return m_name.getVal(m_value-1);
 }
@@ -53,7 +51,7 @@ inline const int ValuesToNames<T>::getValue() const
 }
 
 template<class T>
-inline bool ValuesToNames<T>::inRange() 
+inline const bool ValuesToNames<T>::inRange() 
 {
 	return m_value <= m_name.Max() && m_value >= m_name.Min();
 }
@@ -62,6 +60,7 @@ inline bool ValuesToNames<T>::inRange()
 template <class T >
 std::ostream& operator << (std::ostream& os,  ValuesToNames<T> & val2name)
 {
+	//prints the value only if in range
 	if (val2name.inRange())
 		os << val2name.GetOption();
 	else

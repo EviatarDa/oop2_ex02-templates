@@ -11,7 +11,6 @@ public:
 	virtual bool getValid() const = 0;
 	virtual void setValid() = 0;
 
-
 private:
 
 };

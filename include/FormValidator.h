@@ -10,7 +10,7 @@ enum WIFI { NONE = 1, BASIC, EXTENDED };
 class FormValidator
 {
 public:
-	virtual bool checkValidation() = 0;
+	virtual const bool checkValidation() = 0;
 
 private:
 

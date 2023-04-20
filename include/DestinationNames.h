@@ -2,14 +2,14 @@
 #include <string>
 
 const int DESTINATIONS = 5;
+
 class DestinationNames
 {
 public:
-	int getSize() { return DESTINATIONS; }
-	std::string getVal(int index) { return m_destinations[index]; }
-	int Min() { return 1; };
-	int Max() { return DESTINATIONS; };
-	
+	const int getSize() const { return DESTINATIONS; }
+	const std::string getVal(int index) const { return m_destinations[index]; }
+	int Min() const { return 1; } ;
+	int Max() const { return DESTINATIONS; };
 
 private:
 	std::string m_destinations[DESTINATIONS] = { "Rome ", "Prague " ,"New York ",  "India ", "Thailand" };

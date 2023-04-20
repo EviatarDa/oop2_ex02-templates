@@ -5,7 +5,6 @@
 #include "Validators.h"
 
 
-
 template <class T>
 class Field: public BaseField
 {

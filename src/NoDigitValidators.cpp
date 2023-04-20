@@ -1,5 +1,4 @@
 #include "NoDigitValidator.h"
-
 #pragma once
 
 

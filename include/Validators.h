@@ -25,3 +25,4 @@ inline const std::string Validators<T>::getErrorMsg() const
 {
 	return m_error_msg;
 }
+
