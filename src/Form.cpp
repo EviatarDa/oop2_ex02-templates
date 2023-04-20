@@ -75,11 +75,11 @@ std::ostream& operator<<(std::ostream& os,  Form& form)
 	{
 		form.getField(field)->printField(os);
 	}
-	if (form.getTimeDest())
+	if (!form.getTimeDest())
 	{
 		os << "Destination and flight time don't match\n";
 	}
-	if (form.getWifiDest())
+	if (!form.getWifiDest())
 	{
 		os << "Destination and WIFI bundle don't match\n";
 	}

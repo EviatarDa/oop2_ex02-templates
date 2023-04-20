@@ -45,9 +45,9 @@ inline void Field<T>::addValidator(Validators<T>* p)
 template<class T>
 inline void Field<T>::readData()
 {
-	std::cout << m_question<<" ";
+	std::cout << m_question<<std::endl;
 	std::cin >> m_info;
-	std::cout << m_info << std::endl;
+	//std::cout << m_info << std::endl;
 }
 
 
