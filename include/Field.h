@@ -26,6 +26,7 @@ private:
 	T m_info;
 	Validators<T>* m_validator;
 	bool m_valid = false;
+	bool m_print_error = false;
 
 };
 
@@ -54,6 +55,7 @@ template<class T>
 inline bool Field<T>::fieldIsValid() 
 {
 	m_valid = m_validator->checkValidation(m_info);
+	m_print_error = m_valid;
 	return m_valid;
 }
 
@@ -62,7 +64,7 @@ inline void Field<T>::printField(std::ostream& os)
 {
 	os << "-------------------------------------------------------------------------\n";
 	os << m_question << " = " << m_info;
-	if (!m_valid)
+	if (!m_print_error)
 	{
 		os << "\t\t" << m_validator->getErrorMsg();
 	}

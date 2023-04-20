@@ -9,6 +9,6 @@ public:
 	int Max() { return WIFI; };
 
 private:
-	std::string m_wifibundle[WIFI] = { "None", "Basic" ,"Extended" };
+	std::string m_wifibundle[WIFI] = { "None ", "Basic " ,"Extended" };
 
 };

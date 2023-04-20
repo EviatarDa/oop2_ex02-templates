@@ -9,7 +9,7 @@ public:
 	int Max() { return FLIGHTS; };
 	
 private:
-	std::string m_flighttimes[FLIGHTS] = { "Morning/Noon", "After-Noon/Evening" ,"Night" };
+	std::string m_flighttimes[FLIGHTS] = { "Morning/Noon ", "After-Noon/Evening " ,"Night" };
 
 };
 

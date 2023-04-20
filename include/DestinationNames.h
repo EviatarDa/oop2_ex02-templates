@@ -12,7 +12,7 @@ public:
 	
 
 private:
-	std::string m_destinations[DESTINATIONS] = { "Rome", "Prague" ,"New York",  "India", "Thailand" };
+	std::string m_destinations[DESTINATIONS] = { "Rome ", "Prague " ,"New York ",  "India ", "Thailand" };
 
 };
 
