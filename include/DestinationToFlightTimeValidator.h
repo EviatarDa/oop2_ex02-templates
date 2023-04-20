@@ -16,7 +16,7 @@ private:
 
 template<class T1, class T2>
 inline DestinationToFlightTimeValidator<T1, T2>::DestinationToFlightTimeValidator(T1* destination, T2* time)
-	:m_destination (m_destination), m_time(time)
+	:m_destination (destination), m_time(time)
 {
 }
 
@@ -25,5 +25,35 @@ inline bool DestinationToFlightTimeValidator<T1, T2>::checkValidation()
 {
 	int time = m_time->getInfo().getValue();
 	int destination = m_destination->getInfo().getValue();
+
+	switch (time)
+	{
+	case MORNING_NOON:
+	{
+		if (destination == INDIA || destination == THAILAND)
+		{
+			return false;
+		}
+		break;
+	}
+	case AFTER_NOON_EVENING:
+	{
+		if (destination == ROME || destination == PRAGUE)
+		{
+			return false;
+		}
+		break;
+	}
+
+	case NIGHT:
+	{
+		return true;
+		break;
+	}
+	default:
+		return true;
+		break;
+	}
+
 	return true;
 }

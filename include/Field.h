@@ -4,6 +4,8 @@
 #include "BaseField.h"
 #include "Validators.h"
 
+
+
 template <class T>
 class Field: public BaseField
 {
@@ -15,6 +17,7 @@ public:
 	bool fieldIsValid() override;
 	void printField(std::ostream&) override;
 	bool getValid() const override;
+	void setValid() override;
 	const T getInfo();
 	
 
@@ -41,7 +44,7 @@ inline void Field<T>::addValidator(Validators<T>* p)
 template<class T>
 inline void Field<T>::readData()
 {
-	std::cout << m_question;
+	std::cout << m_question<<" ";
 	std::cin >> m_info;
 	std::cout << m_info << std::endl;
 }
@@ -70,6 +73,12 @@ template<class T>
 inline bool Field<T>::getValid() const
 {
 	return m_valid;
+}
+
+template<class T>
+inline void Field<T>::setValid()
+{
+	m_valid = false;
 }
 
 template<class T>

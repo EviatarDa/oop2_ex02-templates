@@ -28,7 +28,7 @@ inline std::string ValuesToNames<T>::valuesAndNames()
 	std::string string_msg = "(";
 	for (int index = 0; index < m_name.getSize(); index++)
 	{
-		string_msg += std::to_string(index + 1) + " -" + m_name.getVal(index) + " ";
+		string_msg += std::to_string(index + 1) + " -" + m_name.getVal(index);
 	}
 	string_msg += ")";
 	return string_msg;
